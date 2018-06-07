@@ -21,8 +21,9 @@ class JenkinsHttpClient {
      * @return response body as String
      */
     def get(String url, String bearerToken) {
+	String token = 'BEARER' + bearerToken
         def resp = httpRequest.get(url)
-                .header('Authorization', bearerToken)
+                .header('Authorization', token)
                 .send()
         return resp.bodyText()
     }
@@ -35,8 +36,9 @@ class JenkinsHttpClient {
      */
     def postJson(String url, Map<?, ?> body, String bearerToken) {
 	String jsonbody = new JsonBuilder(body).toString()
+	String token = 'BEARER' + bearerToken
         def resp = httpRequest.post(url)
-                .header('Authorization', bearerToken)
+                .header('Authorization', token)
                 .contentType('application/json')
                 .body(jsonbody)
                 .send()
