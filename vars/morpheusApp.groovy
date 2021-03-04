@@ -1,4 +1,4 @@
-import org.morpeusclient.JenkinsHttpClient
+import org.restclient.JenkinsHttpClient
 
 def buildApp(String morpheusUrl, Map<?, ?> postBody, String bearerToken) {
 	JenkinsHttpClient http = new JenkinsHttpClient()
